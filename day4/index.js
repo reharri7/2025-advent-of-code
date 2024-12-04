@@ -11,17 +11,16 @@ try {
 
     // Count occurrences of the word "XMAS" in various directions
     let occurrences = 0;
-    const wordLength = 4; // Length of the word 'XMAS' and its reverse 'SAMX' is fixed
 
     for (let i = 0; i < lines.length; i++) {
       for (let j = 0; j < lines[i].length; j++) {
         // Use a helper function for better readability and DRY principle
-        const checkWord = (di, dj, word) => {
+        const checkWord = (directionI, directionJ, word) => {
           for (let k = 0; k < word.length; k++) {
-            if (i + k * di >= lines.length || i + k * di < 0 || j + k * dj >= lines[i].length || j + k * dj < 0) {
+            if (i + k * directionI >= lines.length || i + k * directionI < 0 || j + k * directionJ >= lines[i].length || j + k * directionJ < 0) {
               return false; // Out of bounds
             }
-            if (lines[i + k * di][j + k * dj] !== word[k]) {
+            if (lines[i + k * directionI][j + k * directionJ] !== word[k]) {
               return false;
             }
           }
